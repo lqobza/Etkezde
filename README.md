@@ -7,3 +7,4 @@ Tervezett feature-ök:
   -admin és felhasználó role-ok:
     -adminként új étel felvitele
     
+Tóth Balázs () és Selmeczi Bende (LQOBZA) projektje
