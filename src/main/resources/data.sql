@@ -1,0 +1,3 @@
+INSERT INTO meal (name, description, discount, price) VALUES ('Kecskekörömpörkölt', 'Kecske körmöt vág mi pedig megpörköljük','DISCOUNT', 1899);
+INSERT INTO meal (name, description, discount, price) VALUES ('Lófej', 'Egy nagy ló feje szemestül mindenestül', 'NORMALPRICE',2499);
+INSERT INTO meal (name, description, discount, price) VALUES ('Kacsatalp', 'Konkrétan egy kacsának a talp része hosszan pácolás után nyárson kisütve','DISCOUNT', 999);
