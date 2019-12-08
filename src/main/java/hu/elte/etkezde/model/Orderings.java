@@ -14,37 +14,23 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Meal {
+public class Orderings {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
-    @NotNull
-    private String name;
+    @ManyToOne
+    private User user;
 
     @Column
-    private String description;
-
-    @Column
-    //@OneToMany(mappedBy = "meal")
-    private String ingredients;
+    @ManyToMany
+    private List<Meal> meals;
 
     @Column
     @NotNull
-    @Enumerated(EnumType.STRING)
-    private Discount discount;
-
-    public enum Discount {
-        DISCOUNT, NORMALPRICE
-    }
-
-    @OneToMany(mappedBy = "meal")
-    private List<Rating> ratings;
+    private String address;
 
     @Column
-    @NotNull
-    private Integer price;
+    private String message;
 }
-
