@@ -1,0 +1,39 @@
+<div>
+    <h1>Meals</h1>
+    <div>
+        <app-status-filter></app-status-filter>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Ingredients</th>
+                <th>Discount</th>
+                <th>Ratings</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container
+                *ngIf="mealService.filteredMeals.length > 0"
+            >
+                <tr
+                    *ngFor="let meal of mealService.filteredMeals"
+                >
+                    <td>{{ meal.name }}</td>
+                    <td>{{ meal.price }}</td>
+                    <td>{{ meal.ingredients }}</td>
+                    <td>{{ meal.discount }}</td>
+                    <td>{{ meal.ratings }}</td>
+                </tr>
+            </ng-container>
+            <tr
+                *ngIf="mealService.filteredMeals.length === 0"
+            >
+                <td
+                    colspan="3"
+                >No meals</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

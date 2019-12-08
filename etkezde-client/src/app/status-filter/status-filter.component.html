@@ -1,0 +1,14 @@
+<mat-button-toggle-group
+    [value]="appStatusFilter"
+    (valueChange)="change($event);"
+>
+    <mat-button-toggle value="">
+        All
+    </mat-button-toggle>
+    <mat-button-toggle value="DISCOUNT">
+        Discount
+    </mat-button-toggle>
+    <mat-button-toggle value="NORMALPRICE">
+        Normal price
+    </mat-button-toggle>
+</mat-button-toggle-group>

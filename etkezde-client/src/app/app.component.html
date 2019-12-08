@@ -1,11 +1,22 @@
 <mat-toolbar color="primary">
-  <button mat-button href="/">
+  <button
+        mat-button
+        routerLink="/"
+    >
       <mat-icon>home</mat-icon>
       Etkezde
   </button>
-  <button mat-button href="/meals">My meals</button>
-  <button mat-button href="/meals/add">New meal</button>
+  <button
+    mat-button
+    routerLink="/meals"
+  >
+    Kaják
+  </button>
+  <button
+    mat-button
+    routerLink="/meals/new"
+  >
+    Új kaja
+  </button>
 </mat-toolbar>
-<app-landing></app-landing>
-<app-meals-list></app-meals-list>
-<app-meals-form></app-meals-form>
+<router-outlet></router-outlet>
