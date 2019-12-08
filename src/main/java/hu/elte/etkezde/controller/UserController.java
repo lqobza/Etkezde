@@ -32,6 +32,11 @@ public class UserController {
         return ResponseEntity.ok(userRepository.save(user));
     }
 
+    @GetMapping("")
+    public Iterable<User> getUsers(){
+        return userRepository.findAll();
+    }
+
     @GetMapping("login")
     public ResponseEntity login() {
         return ResponseEntity.ok().build();
