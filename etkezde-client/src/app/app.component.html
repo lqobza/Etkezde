@@ -6,17 +6,28 @@
       <mat-icon>home</mat-icon>
       Etkezde
   </button>
-  <button
-    mat-button
-    routerLink="/meals"
-  >
-    Kaják
-  </button>
-  <button
-    mat-button
-    routerLink="/meals/new"
-  >
-    Új kaja
-  </button>
+  <ng-container
+        *ngIf="authService.isLoggedIn"
+    >
+        <button
+            mat-button
+            routerLink="/meals"
+        >
+          Kaják
+        </button>
+        <button
+            mat-button
+            routerLink="/meals/new"
+            *appRole="[UserRole.Admin]"
+        >
+          Új kaja
+        </button>
+        <button mat-button (click)="authService.logout()">Logout</button>
+    </ng-container>
+    <ng-container
+        *ngIf="!authService.isLoggedIn"
+    >
+        <button mat-button routerLink="/login">Login</button>
+    </ng-container>
 </mat-toolbar>
 <router-outlet></router-outlet>

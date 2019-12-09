@@ -19,6 +19,7 @@
             >
                 <tr
                     *ngFor="let meal of mealService.filteredMeals"
+                    [routerLink]="['/', 'meals', meal.id]"
                 >
                     <td>{{ meal.name }}</td>
                     <td>{{ meal.price }}</td>

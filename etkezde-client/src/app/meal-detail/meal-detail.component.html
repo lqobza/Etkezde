@@ -1,0 +1,33 @@
+<div>
+    <div>
+        <span>Name:</span>
+        <span>{{ meal?.title }}</span>
+    </div>
+    <div>
+        <span>Price:</span>
+        <span>{{ meal?.price }}</span>
+    </div>
+    <div>
+        <span>Discount:</span>
+        <span>{{ meal?.discount }}</span>
+    </div>
+    <div>
+        <span>Description:</span>
+        <span>{{ meal?.description }}</span>
+    </div>
+    <div>
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="editMeal()"
+            *appRole="[UserRole.Admin]"
+        >Edit</button>
+    </div>
+    <div>
+        <ul>
+            <li *ngFor="let rating of meal.ratings">
+                {{ rating.body }}
+            </li>
+        </ul>
+    </div>
+</div>

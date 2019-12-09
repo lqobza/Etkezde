@@ -15,6 +15,13 @@ import { LandingComponent } from './landing/landing.component';
 import { MealFormComponent } from './meal-form/meal-form.component';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MealDetailComponent } from './meal-detail/meal-detail.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeaderInterceptor } from './header-interceptor';
+import { MealNewComponent } from './meal-new/meal-new.component';
+import { MealEditComponent } from './meal-edit/meal-edit.component';
+import { LoginComponent } from './login/login.component';
+import { RoleDirective } from './role.directive';
 
 @NgModule({
   declarations: [
@@ -23,6 +30,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MealListComponent,
     MealFormComponent,
     StatusFilterComponent,
+    MealDetailComponent,
+    MealNewComponent,
+    MealEditComponent,
+    LoginComponent,
+    RoleDirective,
   ],
   imports: [
     BrowserModule,
@@ -35,8 +47,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatButtonToggleModule,
     MatSelectModule,
     FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeaderInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

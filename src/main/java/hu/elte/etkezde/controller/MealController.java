@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/meals")
 public class MealController {
@@ -47,6 +48,19 @@ public class MealController {
             mealRepository.deleteById(id);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
+    @GetMapping("/{id}")
+    public ResponseEntity<Meal> getMeal(
+            @PathVariable Integer id
+    ) {
+        Optional<Meal> oMeal = mealRepository.findById(id);
+        if (oMeal.isPresent()) {
+            return ResponseEntity.ok(oMeal.get());
+        } else {
             return ResponseEntity.notFound().build();
         }
     }

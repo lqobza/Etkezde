@@ -2,16 +2,20 @@ package hu.elte.etkezde.controller;
 
 import hu.elte.etkezde.model.User;
 import hu.elte.etkezde.repository.UserRepository;
+import hu.elte.etkezde.security.AuthenticatedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
+    @Autowired
+    private AuthenticatedUser authenticatedUser;
 
     @Autowired
     private UserRepository userRepository;
@@ -38,7 +42,7 @@ public class UserController {
     }
 
     @GetMapping("login")
-    public ResponseEntity login() {
-        return ResponseEntity.ok().build();
+    public ResponseEntity<User> login() {
+        return ResponseEntity.ok(authenticatedUser.getUser());
     }
 }

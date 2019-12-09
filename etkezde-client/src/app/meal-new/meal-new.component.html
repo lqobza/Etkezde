@@ -1,0 +1,8 @@
+<div style="padding-left: 4em;">
+    <h1>New meal</h1>
+    <app-meal-form
+        [meal]="meal"
+        [mode]="'create'"
+        (mealSubmit)="submitMeal($event)"
+    ></app-meal-form>
+</div>

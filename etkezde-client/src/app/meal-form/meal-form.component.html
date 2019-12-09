@@ -1,69 +1,54 @@
-<div style="padding-left: 4em;">
-  <h1>New meal</h1>
-  <form #form="ngForm" (ngSubmit)="submitMeal(form.form)">
-    <div>
-      <mat-form-field>
+<form #form="ngForm" (ngSubmit)="submitMeal(form.form)">
+  <div>
+    <mat-form-field>
         <input
-            matInput
-            placeholder="Name"
-            [(ngModel)]="meal.name"
-            name="name"
-            required
-            #name="ngModel"
-        />
-        <mat-error *ngIf="name.invalid && (name.touched || name.dirty) && name.errors['required']">
-            Title is required!
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field>
-        <input
-            matInput
-            placeholder="Price"
-            type="number"
-            value=""
-            [(ngModel)]="meal.price"
-            name="price"
-            required
-            #price="ngModel"
-        />
-        <mat-error *ngIf="price.invalid && (price.touched || price.dirty) && price.errors['required']">
-            Price is required!
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <!-- <div>
-      <mat-form-field>
-        <mat-label>Discount</mat-label>
-        <mat-select
-            [(ngModel)]="meal.discount"
-            name="discount"
-            required
-            #discount="ngModel"
-        >
-          <mat-option *ngFor="let discount of discounts" [value]="discount.value">
-            {{ discount.label }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="discount.invalid && (discount.touched || discount.dirty) && discount.errors['required']">
-            Discount is required!
-        </mat-error>
-      </mat-form-field>
-    </div> -->
-    <div>
-      <mat-form-field>
-        <textarea
-            [(ngModel)]="meal.description"
-            name="description"
-            matInput
-            placeholder="Description"
-            value=""
-        ></textarea>
-      </mat-form-field>
-    </div>
-    <div>
-      <button mat-raised-button color="primary">Create</button>
-    </div>
-  </form>
-</div>
+        matInput
+        placeholder="Name"
+        [(ngModel)]="meal.name"
+        name="name"
+        required
+        #name="ngModel"
+      />
+      <mat-error
+        *ngIf="
+        name.invalid &&
+          (name.touched || name.dirty) &&
+          name.errors['required']
+        "
+      >
+        Name is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+          matInput
+          placeholder="Price"
+          type="number"
+          value=""
+          [(ngModel)]="meal.price"
+          name="price"
+          required
+          #price="ngModel"
+      />
+      <mat-error *ngIf="price.invalid && (price.touched || price.dirty) && price.errors['required']">
+          Price is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <textarea
+          [(ngModel)]="meal.description"
+          name="description"
+          matInput
+          placeholder="Description"
+          value=""
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="primary">Create</button>
+  </div>
+</form>

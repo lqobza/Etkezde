@@ -13,5 +13,7 @@ export class MealListComponent implements OnInit {
     public mealService: MealService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.mealService.getMeals();
+  }
 }

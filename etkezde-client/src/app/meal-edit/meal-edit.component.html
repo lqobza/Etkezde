@@ -1,0 +1,9 @@
+<div style="padding-left: 4em;">
+    <h1>Edit meal</h1>
+    <app-meal-form
+        *ngIf="meal"
+        [meal]="meal"
+        [mode]="'edit'"
+        (mealSubmit)="submitMeal($event)"
+    ></app-meal-form>
+</div>

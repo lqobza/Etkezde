@@ -1,47 +1,55 @@
 import { Injectable } from '@angular/core';
 import { Meal } from 'src/domain/meal';
 import { Discount } from 'src/domain/discount';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MealService {
-
-  meals: Meal[] = [
-    {
-      id: 1,
-      name: 'Kaja1',
-      description: 'Kaja1 description',
-      discount: Discount.Normalprice,
-      ratings: 'jo',
-      price: 1599,
-    },
-    {
-      id: 2,
-      name: 'Kaja2',
-      description: 'Kaja2 description',
-      discount: Discount.Discount,
-      ratings: 'nem jo',
-      price: 2599,
-    },
-  ];
-
+  meals: Meal[] = [];
+  
   filteredMeals: Meal[] = this.meals;
 
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  constructor() { }
+  async getMeals() {
+    const meals = await (this.http.get('meals')
+      .toPromise() as Promise<any[]>);
+    this.filteredMeals = this.meals = meals.map(this.createMealModel);
+  }
+
+  async getMeal(mealId: number): Promise<Meal> {
+    const meal = await (this.http.get(`meals/${mealId}`)
+      .toPromise() as Promise<any>);
+    return this.createMealModel(meal);
+  }
+
+  async createMeal(meal: Meal): Promise<any> {
+    await this.http.post('meals', meal).toPromise();
+  }
+
+  async modifyMeal(meal: Meal): Promise<any> {
+    await this.http.patch(`meals/${meal.id}`, meal).toPromise();
+  }
 
   filterChange(filterValue: string) {
     if (typeof filterValue === 'string') {
       if (filterValue === '') {
         this.filteredMeals = this.meals;
       } else {
-        // Lehet ciklussal is :)
-        this.filteredMeals= this.meals.filter(meal => {
+        this.filteredMeals = this.meals.filter(meal => {
           return meal.discount === filterValue;
         });
       }
     }
   }
 
+  private createMealModel(meal: any): Meal {
+    return {
+      ...meal
+    } as Meal;
+  } 
 }
