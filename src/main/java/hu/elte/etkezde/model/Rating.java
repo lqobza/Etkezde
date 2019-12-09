@@ -25,14 +25,7 @@ public class Rating {
     private User user;
 
     @Column
-    private String body;
-
-    @Column
     private Integer stars;
-
-    @Column (updatable = false)
-    @CreationTimestamp
-    private LocalDateTime created_at;
 
     @JsonIgnore
     @ManyToOne

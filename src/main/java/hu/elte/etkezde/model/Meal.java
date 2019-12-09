@@ -28,10 +28,6 @@ public class Meal {
     private String description;
 
     @Column
-    //@OneToMany(mappedBy = "meal")
-    private String ingredients;
-
-    @Column
     @NotNull
     @Enumerated(EnumType.STRING)
     private Discount discount;
@@ -40,8 +36,8 @@ public class Meal {
         DISCOUNT, NORMALPRICE
     }
 
-    @OneToMany(mappedBy = "meal")
-    private List<Rating> ratings;
+//    @OneToMany(mappedBy = "meal")
+//    private List<Rating> ratings;
 
     @Column
     @NotNull

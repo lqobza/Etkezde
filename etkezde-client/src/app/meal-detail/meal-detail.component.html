@@ -1,7 +1,7 @@
 <div>
     <div>
         <span>Name:</span>
-        <span>{{ meal?.title }}</span>
+        <span>{{ meal?.name }}</span>
     </div>
     <div>
         <span>Price:</span>
@@ -19,15 +19,15 @@
         <button
             mat-raised-button
             color="primary"
+            (click)="discountMeal()"
+            *appRole="[UserRole.Admin]"
+        >Discount</button>
+        <button
+            mat-raised-button
+            color="primary"
             (click)="editMeal()"
             *appRole="[UserRole.Admin]"
         >Edit</button>
-    </div>
-    <div>
-        <ul>
-            <li *ngFor="let rating of meal.ratings">
-                {{ rating.body }}
-            </li>
-        </ul>
+        
     </div>
 </div>

@@ -10,6 +10,7 @@ export class MealService {
   meals: Meal[] = [];
   
   filteredMeals: Meal[] = this.meals;
+  cartMeals: Meal[] = [];
 
   constructor(
     private http: HttpClient
@@ -33,6 +34,10 @@ export class MealService {
 
   async modifyMeal(meal: Meal): Promise<any> {
     await this.http.patch(`meals/${meal.id}`, meal).toPromise();
+  }
+
+  async addToCart(meal: Meal): Promise<any>{
+    await this.http.post('cart', meal).toPromise();
   }
 
   filterChange(filterValue: string) {

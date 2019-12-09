@@ -48,7 +48,7 @@ export class AuthService {
       const user = await (this.http.get('users/login').toPromise() as Promise<User>);
       this.user.name = user.name;
       this.user.role = user.role;
-      this.router.navigate(['/']);
+      this.router.navigate(['/meals']);
     } catch (e) {
       this.user = oldUser;
     }
@@ -62,7 +62,7 @@ export class AuthService {
       role: UserRole.Guest,
     };
     if (shouldNavigateToRoot) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     }
   }
 }

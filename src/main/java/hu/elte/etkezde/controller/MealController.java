@@ -20,8 +20,8 @@ public class MealController {
     @Autowired
     private MealRepository mealRepository;
 
-    @Autowired
-    private RatingRepository ratingRepository;
+//    @Autowired
+//    private RatingRepository ratingRepository;
 
     @Autowired
     private AuthenticatedUser authenticatedUser;
@@ -37,6 +37,32 @@ public class MealController {
     ) {
         Meal savedMeal = mealRepository.save(meal);
         return ResponseEntity.ok(savedMeal);
+    }
+
+    @Secured({ "ROLE_ADMIN" })
+    @PatchMapping("/{id}")
+    public ResponseEntity<Meal> modifyMeal(
+            @PathVariable Integer id,
+            @RequestBody Meal meal
+    ) {
+        Optional<Meal> oMeal = mealRepository.findById(id);
+        if (oMeal.isPresent()) {
+            if (meal.getDiscount() == null) {
+                return ResponseEntity.badRequest().build();
+            }
+            Meal oldMeal = oMeal.get();
+            oldMeal.setName(meal.getName());
+            oldMeal.setDiscount(meal.getDiscount());
+            oldMeal.setPrice(meal.getPrice());
+            oldMeal.setDescription(meal.getDescription());
+
+            Meal savedMeal = mealRepository.save(oldMeal);
+
+            return ResponseEntity.ok(savedMeal);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
     }
 
     @Secured({"ROLE_ADMIN"})
@@ -65,21 +91,21 @@ public class MealController {
         }
     }
 
-    @Secured({"ROLE_USER", "ROLE_ADMIN"})
-    @PostMapping("/{id}/ratings")
-    public ResponseEntity<Rating> addRating(
-            @RequestBody Rating rating,
-            @PathVariable Integer id
-    ) {
-        Optional<Meal> oMeal = mealRepository.findById(id);
-        if (oMeal.isPresent()) {
-            Meal meal = oMeal.get();
-            meal.getRatings().add(rating);
-            rating.setMeal(meal);
-            Rating createdMessage = ratingRepository.save(rating);
-            return ResponseEntity.ok(createdMessage);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    @Secured({"ROLE_USER", "ROLE_ADMIN"})
+//    @PostMapping("/{id}/ratings")
+//    public ResponseEntity<Rating> addRating(
+//            @RequestBody Rating rating,
+//            @PathVariable Integer id
+//    ) {
+//        Optional<Meal> oMeal = mealRepository.findById(id);
+//        if (oMeal.isPresent()) {
+//            Meal meal = oMeal.get();
+//            meal.getRatings().add(rating);
+//            rating.setMeal(meal);
+//            Rating createdMessage = ratingRepository.save(rating);
+//            return ResponseEntity.ok(createdMessage);
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 }

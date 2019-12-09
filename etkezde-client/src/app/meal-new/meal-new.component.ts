@@ -25,7 +25,7 @@ export class MealNewComponent implements OnInit {
       name: '',
       description: '',
       discount: 'NORMALPRICE' as Discount,
-      ratings: null,
+      //ratings: null,
       price: 0,
     };
   }

@@ -32,6 +32,7 @@ export class MealFormComponent implements OnInit {
     if (!form.valid) {
       return;
     }
+    console.log(form.getRawValue() as Meal);
     this.mealSubmit.emit(form.getRawValue() as Meal);
   }
 }

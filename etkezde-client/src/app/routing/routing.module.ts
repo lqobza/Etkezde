@@ -10,6 +10,9 @@ import { MealEditComponent } from '../meal-edit/meal-edit.component';
 import { LoginComponent } from '../login/login.component';
 import { UserRole } from 'src/domain/user-role';
 import { RoleGuard } from '../role.guard';
+import { CartComponent } from '../cart/cart.component';
+import { OrderingsComponent } from '../orderings/orderings.component';
+import { CartAddComponent } from '../cart-add/cart-add.component';
 
 const routes: Routes = [
   {
@@ -54,6 +57,30 @@ const routes: Routes = [
     component: LoginComponent,
     data: {
       roles: [UserRole.Guest],
+    },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'orderings',
+    component: OrderingsComponent,
+    data: {
+      roles: [UserRole.Guest, UserRole.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+    data: {
+      roles: [UserRole.Admin, UserRole.User],
+    },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'cart/add',
+    component: CartAddComponent,
+    data: {
+      roles: [UserRole.Admin, UserRole.User],
     },
     canActivate: [RoleGuard],
   },

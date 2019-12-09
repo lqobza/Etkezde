@@ -6,6 +6,6 @@ export interface Meal {
     name: string;
     description: string;
     discount: Discount;
-    ratings: Rating[];
+    //ratings: Rating[];
     price: number;
 }

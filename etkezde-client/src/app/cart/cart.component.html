@@ -1,8 +1,4 @@
 <div>
-    <h1>Meals</h1>
-    <div>
-        <app-status-filter></app-status-filter>
-    </div>
     <table>
         <thead>
             <tr>
@@ -14,21 +10,20 @@
         </thead>
         <tbody>
             <ng-container
-                *ngIf="mealService.filteredMeals.length > 0"
+                *ngIf="mealService.cartMeals.length > 0"
             >
                 <tr
-                    *ngFor="let meal of mealService.filteredMeals"
+                    *ngFor="let meal of mealService.cartMeals"
                     [routerLink]="['/', 'meals', meal.id]"
                 >
                     <td>{{ meal.name }}</td>
                     <td>{{ meal.price }}</td>
                     <td>{{ meal.description }}</td>
                     <td>{{ meal.discount }}</td>
-                    <!-- <app-cart-add>
-                            (cartSubmit)="addToCart($event)"
-                        </app-cart-add> -->
                 </tr>
             </ng-container>
+            <button>Törlés</button>
+
             <tr
                 *ngIf="mealService.filteredMeals.length === 0"
             >

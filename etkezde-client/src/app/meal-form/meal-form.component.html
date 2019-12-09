@@ -49,6 +49,24 @@
     </mat-form-field>
   </div>
   <div>
-    <button mat-raised-button color="primary">Create</button>
+    <mat-form-field>
+      <mat-label>Discount</mat-label>
+        <mat-select
+          [(ngModel)]="meal.discount"
+          name="discount"
+          required
+          #discount="ngModel"
+        >
+        <mat-option *ngFor="let discount of discounts" [value]="discount.value">
+          {{ discount.label }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="discount.invalid && (discount.touched || discount.dirty) && discount.errors['required']">
+          Discount is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="primary">Done</button>
   </div>
 </form>
