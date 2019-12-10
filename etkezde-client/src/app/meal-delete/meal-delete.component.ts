@@ -22,7 +22,8 @@ export class MealDeleteComponent implements OnInit {
 
   async deleteMeal(){
     await this.mealService.deleteMeal(this.meal);
-    this.router.navigate(['/', 'meals']);
+    this.mealService.getMeals();
+    //this.router.navigate(['/', 'meals']);
   }
 
 }

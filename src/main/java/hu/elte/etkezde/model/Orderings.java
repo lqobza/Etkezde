@@ -24,5 +24,5 @@ public class Orderings {
 
     @Column
     @ManyToMany
-    private List<Cart> cartList;
+    private Cart carts;
 }

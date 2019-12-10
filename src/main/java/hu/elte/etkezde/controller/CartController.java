@@ -27,28 +27,26 @@ public class CartController {
     private AuthenticatedUser authenticatedUser;
 
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
-    @GetMapping("/{username}")
-    public Cart getCart(
-            @PathVariable String username
-    ){
-        Optional<Cart> oCart=cartRepository.findById(userRepository.findByUsername(username).get().getId());
-        return oCart.get();
+    @GetMapping("")
+    public Iterable<Meal> getCart(){
+        Iterable<Meal> oCart=cartRepository.findAll();
+        return oCart;
     }
 
-    @Secured({"ROLE_USER", "ROLE_ADMIN"})
-    @PostMapping("/{username}")
-    public ResponseEntity<Cart> addToCart(
-            @PathVariable String username,
-            @RequestBody Meal meal
-    ) {
-        Optional<Cart> oCart=cartRepository.findById(userRepository.findByUsername(username).get().getId());
-        Cart newCart = oCart.get();
-        List<Meal> oldMealList=oCart.get().getMealList();
-        oldMealList.add(meal);
-        newCart.setMealList(oldMealList);
-        Cart savedCart=cartRepository.save(newCart);
-        return ResponseEntity.ok(savedCart);
-    }
+//    @Secured({"ROLE_USER", "ROLE_ADMIN"})
+//    @PostMapping("/{username}")
+//    public ResponseEntity<Cart> addToCart(
+//            @PathVariable String username,
+//            @RequestBody Meal meal
+//    ) {
+//        Optional<Cart> oCart=cartRepository.findById(userRepository.findByUsername(username).get().getId());
+//        Cart newCart = oCart.get();
+//        List<Meal> oldMealList=oCart.get().getMealList();
+//        oldMealList.add(meal);
+//        newCart.setMealList(oldMealList);
+//        Cart savedCart=cartRepository.save(newCart.getMealList());
+//        return ResponseEntity.ok(savedCart);
+//    }
 
 
 //    @Secured({"ROLE_USER", "ROLE_ADMIN" })

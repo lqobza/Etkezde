@@ -20,7 +20,7 @@ public class Cart {
     private Integer id;
 
     @ManyToMany
-    private List<Meal> mealList;
+    private Meal meals;
 //
 //    @OneToOne
 //    private User user;

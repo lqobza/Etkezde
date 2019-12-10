@@ -24,6 +24,10 @@ export class AuthService {
 
   private user: User;
 
+  getUser():User{
+    return this.user;
+  }
+
   constructor(
     private router: Router,
     private http: HttpClient
