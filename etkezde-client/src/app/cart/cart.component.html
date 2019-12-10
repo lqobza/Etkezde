@@ -14,23 +14,22 @@
             >
                 <tr
                     *ngFor="let meal of mealService.cartMeals"
-                    [routerLink]="['/', 'meals', meal.id]"
                 >
                     <td>{{ meal.name }}</td>
                     <td>{{ meal.price }}</td>
                     <td>{{ meal.description }}</td>
                     <td>{{ meal.discount }}</td>
+                    <button mat-button (click)="removeFromCart()">Delete</button>
                 </tr>
             </ng-container>
-            <button>Törlés</button>
-
             <tr
-                *ngIf="mealService.filteredMeals.length === 0"
+                *ngIf="mealService.cartMeals.length === 0"
             >
                 <td
                     colspan="3"
                 >No meals</td>
             </tr>
+            <button mat-button (click)="placeOrder()">Place order</button>
         </tbody>
     </table>
 </div>

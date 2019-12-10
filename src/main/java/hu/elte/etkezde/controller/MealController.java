@@ -1,9 +1,7 @@
 package hu.elte.etkezde.controller;
 
 import hu.elte.etkezde.model.Meal;
-import hu.elte.etkezde.model.Rating;
 import hu.elte.etkezde.repository.MealRepository;
-import hu.elte.etkezde.repository.RatingRepository;
 import hu.elte.etkezde.security.AuthenticatedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -65,15 +63,18 @@ public class MealController {
 
     }
 
-    @Secured({"ROLE_ADMIN"})
+    @Secured({ "ROLE_ADMIN" })
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteMeal(
-            @PathVariable Integer id
+    public ResponseEntity<Meal> deleteMeal(
+            @PathVariable int id
     ) {
         try {
+            //Optional<Meal> oMeal=mealRepository.findById(id);
+            //System.out.println("valami "+id+" "+mealRepository.findById(id).isPresent());
             mealRepository.deleteById(id);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
+            System.out.println(e.toString());
             return ResponseEntity.notFound().build();
         }
     }

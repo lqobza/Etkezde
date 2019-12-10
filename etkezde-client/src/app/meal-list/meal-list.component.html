@@ -18,15 +18,19 @@
             >
                 <tr
                     *ngFor="let meal of mealService.filteredMeals"
-                    [routerLink]="['/', 'meals', meal.id]"
                 >
-                    <td>{{ meal.name }}</td>
-                    <td>{{ meal.price }}</td>
-                    <td>{{ meal.description }}</td>
-                    <td>{{ meal.discount }}</td>
-                    <!-- <app-cart-add>
-                            (cartSubmit)="addToCart($event)"
-                        </app-cart-add> -->
+                    <td [routerLink]="['/', 'meals', meal.id]">{{ meal.name }}</td>
+                    <td [routerLink]="['/', 'meals', meal.id]">{{ meal.price }}</td>
+                    <td [routerLink]="['/', 'meals', meal.id]">{{ meal.description }}</td>
+                    <td [routerLink]="['/', 'meals', meal.id]">{{ meal.discount }}</td>
+                    <app-cart-add
+                        *ngIf="meal"
+                        [meal]="meal"
+                    ></app-cart-add>
+                    <app-meal-delete
+                        *ngIf="meal"
+                        [meal]="meal"
+                    ></app-meal-delete>
                 </tr>
             </ng-container>
             <tr

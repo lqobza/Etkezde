@@ -4,7 +4,7 @@
         routerLink="/meals"
     >
       <mat-icon>home</mat-icon>
-      Etkezde
+      GOGO hami
   </button>
   <ng-container
         *ngIf="authService.isLoggedIn"
@@ -13,35 +13,35 @@
             mat-button
             routerLink="/meals"
         >
-          Kaják
+          Meals
         </button>
         <button
             mat-button
             routerLink="/meals/new"
             *appRole="[UserRole.Admin]"
         >
-          Új kaja
+          New meal
         </button>
         <button
             mat-button
             routerLink="/cart"
             *appRole="[UserRole.Admin, UserRole.User]"
         >
-          Kosár
+          Cart
         </button>
         <button
             mat-button
             routerLink="/orderings"
             *appRole="[UserRole.Admin, UserRole.User]"
         >
-          Rendeléseim
+          My orders
         </button>
-        <button mat-button (click)="authService.logout()">Kijelentkezés</button>
+        <button mat-button (click)="authService.logout()">Log out</button>
     </ng-container>
     <ng-container
         *ngIf="!authService.isLoggedIn"
     >
-        <button mat-button routerLink="/login">Bejelentkezés</button>
+        <button mat-button routerLink="/login">Login</button>
     </ng-container>
 </mat-toolbar>
 <router-outlet></router-outlet>

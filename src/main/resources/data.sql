@@ -7,8 +7,4 @@ INSERT INTO user (name, username, password, role) VALUES ('Balazs', 'balazs', '$
 INSERT INTO user (name, username, password, role) VALUES ('Tamas', 'tamas', '$2y$12$n3Fw3hL.E3LWEwmuIK1uMOTbzuNEQukzrdXrJgs1GQfPtMOZ..aqO', 'ROLE_USER');
 
 
-INSERT INTO orderings (user_id,address,message) VALUES (2, 'detk, tyúkos utca 31', 'extra szósszal kérném a lófejet');
-
-INSERT INTO orderings_meals(orderings_id,meals_id) VALUES (1,1);
-INSERT INTO orderings_meals(orderings_id,meals_id) VALUES (1,2);
-INSERT INTO orderings_meals(orderings_id,meals_id) VALUES (1,2);
+INSERT INTO orderings (user_id) VALUES (2);

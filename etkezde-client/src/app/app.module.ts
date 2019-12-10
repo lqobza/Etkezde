@@ -25,6 +25,7 @@ import { RoleDirective } from './role.directive';
 import { CartComponent } from './cart/cart.component';
 import { OrderingsComponent } from './orderings/orderings.component';
 import { CartAddComponent } from './cart-add/cart-add.component';
+import { MealDeleteComponent } from './meal-delete/meal-delete.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CartAddComponent } from './cart-add/cart-add.component';
     CartComponent,
     OrderingsComponent,
     CartAddComponent,
+    MealDeleteComponent,
   ],
   imports: [
     BrowserModule,
